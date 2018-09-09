@@ -1,0 +1,51 @@
+syntax = "proto3";
+package storage;
+
+
+message Tag {
+  uint32 object_type = 1;
+  uint64 object_id = 2;
+}
+
+message Event {
+  uint64 id = 1;
+  string data = 2;
+  repeated Tag tags = 3;
+  uint64 turn = 4;
+  double time = 5;
+}
+
+
+message AddEventsRequest {
+  repeated Event events = 1;
+}
+
+
+message AddEventsResponse {
+}
+
+
+message GetEventsRequest {
+
+  enum SortMethod {
+    TIME_ASC = 0;
+    TIME_DESC = 1;
+    TURN_ASC = 2;
+    TURN_DESC = 3;
+  }
+
+  repeated Tag tags = 1;
+  uint32 page = 2;
+  uint32 records_on_page = 3
+  SortMethod sort_method = 4;
+}
+
+
+message GetEventsResponse {
+  repeated Item items = 1;
+  uint32 page = 2;
+}
+
+
+message DebugClearServiceRequest {}
+message DebugClearServiceResponse {}

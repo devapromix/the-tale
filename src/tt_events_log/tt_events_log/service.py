@@ -16,7 +16,7 @@ async def on_cleanup(app):
 def register_routers(app):
     from . import handlers
 
-    app.router.add_post('/add-events', handlers.add_event)
+    app.router.add_post('/add-event', handlers.add_event)
     app.router.add_post('/get-events', handlers.get_events)
 
     app.router.add_post('/debug-clear-service', handlers.debug_clear_service)

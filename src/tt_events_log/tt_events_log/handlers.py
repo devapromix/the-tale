@@ -7,23 +7,41 @@ from . import protobuf
 from . import operations
 
 
-@handlers.api(events_log_pb2.AddEventsRequest)
-async def add_events(message, **kwargs):
-    await operations.add_events(events=[protobuf.to_event(event) for event in message.events])
-    return events_log_pb2.AddEventsResponse()
+@handlers.api(events_log_pb2.AddEventRequest)
+async def add_event(message, **kwargs):
+    await operations.add_events(tags=frozenset(message.tags),
+                                data=message.data,
+                                turn=message.turn)
+    return events_log_pb2.AddEventResponse()
 
 
 @handlers.api(events_log_pb2.GetEventsRequest)
 async def get_events(message, **kwargs):
-    tags = await operations.get_tags_ids(tags=[protobuf.to_tag(tag) for tag in message.tags])
+    tags = frozenset(message.tags)
+
+    records_number = await operations.events_number(tags=tags)
+
+    total_pages = records_number // message.records_on_page
+
+    if total_pages * message.records_on_page < records_number:
+        total_pages += 1
+
+    if total_pages <= 0:
+        total_pages = 1
+
+    page = message.page if message.page <= total_pages else total_pages
+
+    if page <= 0:
+        page = 1
 
     events = await operations.get_events(tags=tags,
-                                         page=message.page,
+                                         page=page,
                                          records_on_page=message.records_on_page,
                                          sort_method=message.sort_method)
 
     return events_log_pb2.GetRecordsResponse(events=[protobuf.from_event(event) for event in events],
-                                             page='xxxx')
+                                             page=page,
+                                             total_pages=total_pages)
 
 
 @handlers.api(events_log_pb2.DebugClearServiceRequest)

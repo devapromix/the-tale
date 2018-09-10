@@ -119,6 +119,17 @@
     collect_static: false
 
 
+- name: install TT game chronicle
+  import_playbook: ../tasks/tt_service.yml
+  vars:
+    name: TT game chronicle
+    user: tt_game_chronicle
+    packages: "{{tt_services['tt_game_chronicle']['packages']}}"
+    django_settings: tt_events_log.settings
+    port: 10011
+    collect_static: false
+
+
 - name: install services cron files
   import_playbook: ../tasks/tt_cron.yml
 

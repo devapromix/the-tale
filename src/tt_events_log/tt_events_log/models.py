@@ -17,29 +17,16 @@ class Event(models.Model):
         db_table = 'events'
 
 
-class Tag(models.Model):
-
-    id = models.BigAutoField(primary_key=True)
-
-    object_type = models.BigIntegerField()
-
-    object_id = models.BigIntegerField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    created_at_turn = models.BigIntegerField()
-
-    class Meta:
-        db_table = 'tags'
-        unique_together = (('object_type', 'object_id'),)
-
-
 class EventTag(models.Model):
 
     id = models.BigAutoField(primary_key=True)
 
     event = models.ForeignKey(Event)
 
-    tag = models.ForeignKey(Tag, db_index=True)
+    tag = models.BigIntegerField(db_index=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'events_tags'
+        unique_together = (('tag', 'event'),)

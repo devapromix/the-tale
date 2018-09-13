@@ -11,7 +11,8 @@ from . import operations
 async def add_event(message, **kwargs):
     await operations.add_events(tags=frozenset(message.tags),
                                 data=message.data,
-                                turn=message.turn)
+                                turn=message.turn,
+                                time=datetime.datetime.fromtimestamp(message.time))
     return events_log_pb2.AddEventResponse()
 
 

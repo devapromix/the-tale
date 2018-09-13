@@ -19,26 +19,21 @@ message AddEventRequest {
 }
 
 
-message AddEventsResponse {
+message AddEventResponse {
 }
 
 
 message GetEventsRequest {
-  enum SortMethod {
-    TIME_ASC = 0;
-    TIME_DESC = 1;
-    TURN_ASC = 2;
-    TURN_DESC = 3;
-  }
-
   repeated uint64 tags = 1;
   uint32 page = 2;
   uint32 records_on_page = 3;
-  SortMethod sort_method = 4;
 }
 
 
 message GetEventsResponse {
+  repeated Event events = 1;
+  uint32 page = 2;
+  uint32 total_pages = 3;
 }
 
 

@@ -1,5 +1,9 @@
 
+import datetime
+
+from tt_web import s11n
 from tt_web import handlers
+from tt_web import exceptions as tt_exceptions
 
 from tt_protocol.protocol import events_log_pb2
 
@@ -9,10 +13,14 @@ from . import operations
 
 @handlers.api(events_log_pb2.AddEventRequest)
 async def add_event(message, **kwargs):
-    await operations.add_events(tags=frozenset(message.tags),
-                                data=message.data,
-                                turn=message.turn,
-                                time=datetime.datetime.fromtimestamp(message.time))
+
+    if not message.tags:
+        raise tt_exceptions.ApiError(code='events_log.add_event.no_tags', message='at least one tag MUST be specified')
+
+    await operations.add_event(tags=frozenset(message.tags),
+                               data=s11n.from_json(message.data),
+                               turn=message.turn,
+                               time=datetime.datetime.fromtimestamp(message.time))
     return events_log_pb2.AddEventResponse()
 
 
@@ -37,8 +45,7 @@ async def get_events(message, **kwargs):
 
     events = await operations.get_events(tags=tags,
                                          page=page,
-                                         records_on_page=message.records_on_page,
-                                         sort_method=message.sort_method)
+                                         records_on_page=message.records_on_page)
 
     return events_log_pb2.GetRecordsResponse(events=[protobuf.from_event(event) for event in events],
                                              page=page,

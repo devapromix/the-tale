@@ -19,41 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='events_log.proto',
   package='events_log',
   syntax='proto3',
-  serialized_pb=_b('\n\x10\x65vents_log.proto\x12\nevents_log\"K\n\x05\x45vent\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0c\n\x04tags\x18\x03 \x03(\x04\x12\x0c\n\x04turn\x18\x04 \x01(\x04\x12\x0c\n\x04time\x18\x05 \x01(\x01\"I\n\x0f\x41\x64\x64\x45ventRequest\x12\x0c\n\x04tags\x18\x01 \x03(\x04\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0c\n\x04turn\x18\x03 \x01(\x04\x12\x0c\n\x04time\x18\x04 \x01(\x01\"\x13\n\x11\x41\x64\x64\x45ventsResponse\"\xcd\x01\n\x10GetEventsRequest\x12\x0c\n\x04tags\x18\x01 \x03(\x04\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x17\n\x0frecords_on_page\x18\x03 \x01(\r\x12<\n\x0bsort_method\x18\x04 \x01(\x0e\x32\'.events_log.GetEventsRequest.SortMethod\"F\n\nSortMethod\x12\x0c\n\x08TIME_ASC\x10\x00\x12\r\n\tTIME_DESC\x10\x01\x12\x0c\n\x08TURN_ASC\x10\x02\x12\r\n\tTURN_DESC\x10\x03\"\x13\n\x11GetEventsResponse\"\x1a\n\x18\x44\x65\x62ugClearServiceRequest\"\x1b\n\x19\x44\x65\x62ugClearServiceResponseb\x06proto3')
+  serialized_pb=_b('\n\x10\x65vents_log.proto\x12\nevents_log\"K\n\x05\x45vent\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0c\n\x04tags\x18\x03 \x03(\x04\x12\x0c\n\x04turn\x18\x04 \x01(\x04\x12\x0c\n\x04time\x18\x05 \x01(\x01\"I\n\x0f\x41\x64\x64\x45ventRequest\x12\x0c\n\x04tags\x18\x01 \x03(\x04\x12\x0c\n\x04\x64\x61ta\x18\x02 \x01(\t\x12\x0c\n\x04turn\x18\x03 \x01(\x04\x12\x0c\n\x04time\x18\x04 \x01(\x01\"\x12\n\x10\x41\x64\x64\x45ventResponse\"G\n\x10GetEventsRequest\x12\x0c\n\x04tags\x18\x01 \x03(\x04\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x17\n\x0frecords_on_page\x18\x03 \x01(\r\"Y\n\x11GetEventsResponse\x12!\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x11.events_log.Event\x12\x0c\n\x04page\x18\x02 \x01(\r\x12\x13\n\x0btotal_pages\x18\x03 \x01(\r\"\x1a\n\x18\x44\x65\x62ugClearServiceRequest\"\x1b\n\x19\x44\x65\x62ugClearServiceResponseb\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
-
-_GETEVENTSREQUEST_SORTMETHOD = _descriptor.EnumDescriptor(
-  name='SortMethod',
-  full_name='events_log.GetEventsRequest.SortMethod',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='TIME_ASC', index=0, number=0,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TIME_DESC', index=1, number=1,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TURN_ASC', index=2, number=2,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='TURN_DESC', index=3, number=3,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=341,
-  serialized_end=411,
-)
-_sym_db.RegisterEnumDescriptor(_GETEVENTSREQUEST_SORTMETHOD)
 
 
 _EVENT = _descriptor.Descriptor(
@@ -167,9 +137,9 @@ _ADDEVENTREQUEST = _descriptor.Descriptor(
 )
 
 
-_ADDEVENTSRESPONSE = _descriptor.Descriptor(
-  name='AddEventsResponse',
-  full_name='events_log.AddEventsResponse',
+_ADDEVENTRESPONSE = _descriptor.Descriptor(
+  name='AddEventResponse',
+  full_name='events_log.AddEventResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -187,7 +157,7 @@ _ADDEVENTSRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=184,
-  serialized_end=203,
+  serialized_end=202,
 )
 
 
@@ -219,19 +189,11 @@ _GETEVENTSREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='sort_method', full_name='events_log.GetEventsRequest.sort_method', index=3,
-      number=4, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
-    _GETEVENTSREQUEST_SORTMETHOD,
   ],
   options=None,
   is_extendable=False,
@@ -239,8 +201,8 @@ _GETEVENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=206,
-  serialized_end=411,
+  serialized_start=204,
+  serialized_end=275,
 )
 
 
@@ -251,6 +213,27 @@ _GETEVENTSRESPONSE = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='events', full_name='events_log.GetEventsResponse.events', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='page', full_name='events_log.GetEventsResponse.page', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='total_pages', full_name='events_log.GetEventsResponse.total_pages', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -263,8 +246,8 @@ _GETEVENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=413,
-  serialized_end=432,
+  serialized_start=277,
+  serialized_end=366,
 )
 
 
@@ -287,8 +270,8 @@ _DEBUGCLEARSERVICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=434,
-  serialized_end=460,
+  serialized_start=368,
+  serialized_end=394,
 )
 
 
@@ -311,15 +294,14 @@ _DEBUGCLEARSERVICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=462,
-  serialized_end=489,
+  serialized_start=396,
+  serialized_end=423,
 )
 
-_GETEVENTSREQUEST.fields_by_name['sort_method'].enum_type = _GETEVENTSREQUEST_SORTMETHOD
-_GETEVENTSREQUEST_SORTMETHOD.containing_type = _GETEVENTSREQUEST
+_GETEVENTSRESPONSE.fields_by_name['events'].message_type = _EVENT
 DESCRIPTOR.message_types_by_name['Event'] = _EVENT
 DESCRIPTOR.message_types_by_name['AddEventRequest'] = _ADDEVENTREQUEST
-DESCRIPTOR.message_types_by_name['AddEventsResponse'] = _ADDEVENTSRESPONSE
+DESCRIPTOR.message_types_by_name['AddEventResponse'] = _ADDEVENTRESPONSE
 DESCRIPTOR.message_types_by_name['GetEventsRequest'] = _GETEVENTSREQUEST
 DESCRIPTOR.message_types_by_name['GetEventsResponse'] = _GETEVENTSRESPONSE
 DESCRIPTOR.message_types_by_name['DebugClearServiceRequest'] = _DEBUGCLEARSERVICEREQUEST
@@ -339,12 +321,12 @@ AddEventRequest = _reflection.GeneratedProtocolMessageType('AddEventRequest', (_
   ))
 _sym_db.RegisterMessage(AddEventRequest)
 
-AddEventsResponse = _reflection.GeneratedProtocolMessageType('AddEventsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _ADDEVENTSRESPONSE,
+AddEventResponse = _reflection.GeneratedProtocolMessageType('AddEventResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ADDEVENTRESPONSE,
   __module__ = 'events_log_pb2'
-  # @@protoc_insertion_point(class_scope:events_log.AddEventsResponse)
+  # @@protoc_insertion_point(class_scope:events_log.AddEventResponse)
   ))
-_sym_db.RegisterMessage(AddEventsResponse)
+_sym_db.RegisterMessage(AddEventResponse)
 
 GetEventsRequest = _reflection.GeneratedProtocolMessageType('GetEventsRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETEVENTSREQUEST,
